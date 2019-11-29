@@ -1,17 +1,20 @@
 import React, { useEffect } from "react";
-import { connect, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { fetchInfo } from "../actions";
+import Header from "./Header";
+import BlockList from "./BlockList";
 
 const EosStuff = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchInfo());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
-      <div>EOS.IO BLOCKS</div>
+      <Header />
+      <BlockList />
     </div>
   );
 };
