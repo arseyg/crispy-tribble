@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-import { getEosInfo, getBlock } from "./api";
+import { getEosInfo, getBlock, getAbi } from "./api";
 
 export const anAction = createAction("an_action");
 
@@ -11,7 +11,8 @@ export const fetchInfo = () => async dispatch => {
     const eosInfo = await getEosInfo();
     dispatch(getEosInfoSuccess(eosInfo));
     //console.log(eosInfo.head_block_num);
-    dispatch(fetchBlock(eosInfo.head_block_num));
+    //dispatch(fetchBlock(eosInfo.head_block_num));
+    //dispatch(fetchAbi("eosio.token"));
   } catch (err) {
     dispatch(getEosInfoFailed(err));
   }
@@ -29,7 +30,14 @@ export const fetchBlock = blockNum => async dispatch => {
   }
 };
 
-export const fetchAllBlocks = () => async dispatch => {
-  //   try {
-  //   }
+export const getAbiSuccess = createAction("eos/getabisuccess");
+export const getAbiFailed = createAction("eos/getabifailed");
+
+export const fetchAbi = accountName => async dispatch => {
+  try {
+    const abiInfo = await getAbi(accountName);
+    dispatch(getAbiSuccess(abiInfo));
+  } catch (err) {
+    dispatch(getAbiFailed(err));
+  }
 };

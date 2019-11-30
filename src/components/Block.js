@@ -1,8 +1,15 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchBlock } from "../actions";
 
 const Block = ({ blockId }) => {
+  const dispatch = useDispatch();
   const blockInfo = useSelector(state => state.eos.blocks[blockId]);
+  useEffect(() => {
+    if (!blockInfo) {
+      dispatch(fetchBlock(blockId));
+    }
+  }, [blockId, blockInfo, dispatch]);
   return (
     <div>
       {blockInfo ? (
