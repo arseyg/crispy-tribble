@@ -1,12 +1,13 @@
 import React from "react";
 
-const RefreshIcon = () => (
+const RefreshIcon = ({ isLoading }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     y="0px"
     x="0px"
     viewBox="0 0 65 65"
     className="inline w-4 h-4"
+    style={{ animation: isLoading ? "spinAround 1200ms infinite linear" : "" }}
   >
     <g id="Layer_3_copy_2">
       <g fill="#555753">

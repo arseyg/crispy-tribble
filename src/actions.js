@@ -3,11 +3,13 @@ import { getEosInfo, getBlock, getAbi } from "./api";
 
 export const anAction = createAction("an_action");
 
+export const getEosInfoStarted = createAction("eos/getinfostarted");
 export const getEosInfoSuccess = createAction("eos/getinfosuccess");
 export const getEosInfoFailed = createAction("eos/getinfofailed");
 
 export const fetchInfo = () => async dispatch => {
   try {
+    dispatch(getEosInfoStarted());
     const eosInfo = await getEosInfo();
     dispatch(getEosInfoSuccess(eosInfo));
     //console.log(eosInfo.head_block_num);
@@ -26,7 +28,8 @@ export const fetchBlock = blockNum => async dispatch => {
     const blockInfo = await getBlock(blockNum);
     dispatch(getBlockSuccess(blockInfo));
   } catch (err) {
-    dispatch(getBlockFailed(err));
+    console.log("failed ", err);
+    dispatch(getBlockFailed());
   }
 };
 

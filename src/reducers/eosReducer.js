@@ -1,11 +1,16 @@
 import { createReducer } from "@reduxjs/toolkit";
 
-import { getEosInfoSuccess, getBlockSuccess } from "../actions";
+import {
+  getEosInfoSuccess,
+  getBlockSuccess,
+  getEosInfoStarted
+} from "../actions";
 
 const initialState = {
   headBlockNum: null,
   blocks: {},
-  activeBlocks: []
+  activeBlocks: [],
+  isInfoLoading: null
 };
 
 const eosReducer = createReducer(initialState, {
@@ -15,9 +20,19 @@ const eosReducer = createReducer(initialState, {
     state.activeBlocks = [...Array(10)].map((e, i) => {
       return headBlockNum - i;
     });
+    // remove unused block info from store
+    Object.keys(state.blocks).forEach((bId, i) => {
+      if (!state.activeBlocks.includes(Number(bId))) {
+        delete state.blocks[bId];
+      }
+    });
+    state.isInfoLoading = false;
   },
   [getBlockSuccess]: (state, action) => {
     state.blocks[action.payload.block_num] = action.payload;
+  },
+  [getEosInfoStarted]: (state, action) => {
+    state.isInfoLoading = true;
   }
 });
 

@@ -4,21 +4,10 @@ import { createSelector } from "@reduxjs/toolkit";
 
 import { fetchBlock } from "../actions";
 
-const actionCountSelector = createSelector();
-//blocks
-
-const countActions = blockInfo => {
-  //return blockInfo.
-  // blockInfo.transactions (is an arr)
-  // [0].trx (either object or string)
-  // .transaction.actions
-};
-
 const Block = ({ blockId }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const blockInfo = useSelector(state => state.eos.blocks[blockId]);
-  //const actionCount = useSelector()
   useEffect(() => {
     if (!blockInfo) {
       dispatch(fetchBlock(blockId));
@@ -27,20 +16,29 @@ const Block = ({ blockId }) => {
   return (
     <div className="p-3 border-b-2">
       {blockInfo ? (
-        <div
-          onClick={() => {
-            setIsOpen(!isOpen);
-          }}
-        >
-          <div className="text-sm">{blockInfo.timestamp}</div>
-          <div className="text-lg p-2">{blockInfo.id}</div>
-          <div className="text-lg italic px-2">
-            {blockInfo.transactions.length + 1} actions
+        <div>
+          <div
+            onClick={() => {
+              setIsOpen(!isOpen);
+            }}
+            className="cursor-pointer"
+          >
+            <div className="text-sm">{blockInfo.timestamp}</div>
+            <div className="text-lg p-2">{blockInfo.id}</div>
+            <div className="text-lg italic px-2">
+              {blockInfo.transactions.length + 1} actions
+            </div>
           </div>
-          {isOpen && <div>BLOCKINFO</div>}
+          {isOpen && (
+            <div>
+              <pre className="overflow-scroll h-40">
+                {JSON.stringify(blockInfo, null, 4)}
+              </pre>
+            </div>
+          )}
         </div>
       ) : (
-        blockId
+        <div className="p-4 spinner"></div>
       )}
     </div>
   );
