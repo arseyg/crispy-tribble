@@ -11396,11 +11396,11 @@ video {
 .spinner::after {
   content: '';
   position: absolute !important;
-  top: calc(50% - (3em / 2));
-  left: calc(50% - (3em / 2));
+  top: calc(50% - (2em / 2));
+  left: calc(50% - (2em / 2));
   display: block;
-  width: 3em;
-  height: 3em;
+  width: 2em;
+  height: 2em;
   border: 2px solid #dae1e7;
   border-radius: 9999px;
   border-right-color: transparent;
@@ -22203,11 +22203,11 @@ video {
   .sm\:spinner::after {
     content: '';
     position: absolute !important;
-    top: calc(50% - (3em / 2));
-    left: calc(50% - (3em / 2));
+    top: calc(50% - (2em / 2));
+    left: calc(50% - (2em / 2));
     display: block;
-    width: 3em;
-    height: 3em;
+    width: 2em;
+    height: 2em;
     border: 2px solid #dae1e7;
     border-radius: 9999px;
     border-right-color: transparent;
@@ -32987,11 +32987,11 @@ video {
   .md\:spinner::after {
     content: '';
     position: absolute !important;
-    top: calc(50% - (3em / 2));
-    left: calc(50% - (3em / 2));
+    top: calc(50% - (2em / 2));
+    left: calc(50% - (2em / 2));
     display: block;
-    width: 3em;
-    height: 3em;
+    width: 2em;
+    height: 2em;
     border: 2px solid #dae1e7;
     border-radius: 9999px;
     border-right-color: transparent;
@@ -43771,11 +43771,11 @@ video {
   .lg\:spinner::after {
     content: '';
     position: absolute !important;
-    top: calc(50% - (3em / 2));
-    left: calc(50% - (3em / 2));
+    top: calc(50% - (2em / 2));
+    left: calc(50% - (2em / 2));
     display: block;
-    width: 3em;
-    height: 3em;
+    width: 2em;
+    height: 2em;
     border: 2px solid #dae1e7;
     border-radius: 9999px;
     border-right-color: transparent;
@@ -54555,11 +54555,11 @@ video {
   .xl\:spinner::after {
     content: '';
     position: absolute !important;
-    top: calc(50% - (3em / 2));
-    left: calc(50% - (3em / 2));
+    top: calc(50% - (2em / 2));
+    left: calc(50% - (2em / 2));
     display: block;
-    width: 3em;
-    height: 3em;
+    width: 2em;
+    height: 2em;
     border: 2px solid #dae1e7;
     border-radius: 9999px;
     border-right-color: transparent;

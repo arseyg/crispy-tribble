@@ -1,16 +1,20 @@
 import { createReducer } from "@reduxjs/toolkit";
 
 import {
+  getEosInfoStarted,
   getEosInfoSuccess,
+  getEosInfoFailed,
   getBlockSuccess,
-  getEosInfoStarted
+  getBlockFailed
 } from "../actions";
 
 const initialState = {
   headBlockNum: null,
   blocks: {},
   activeBlocks: [],
-  isInfoLoading: null
+  isInfoLoading: null,
+  infoError: false,
+  blockErrors: []
 };
 
 const eosReducer = createReducer(initialState, {
@@ -33,6 +37,12 @@ const eosReducer = createReducer(initialState, {
   },
   [getEosInfoStarted]: (state, action) => {
     state.isInfoLoading = true;
+  },
+  [getEosInfoFailed]: (state, action) => {
+    state.infoError = true;
+  },
+  [getBlockFailed]: (state, action) => {
+    state.blockErrors.push(action.payload);
   }
 });
 

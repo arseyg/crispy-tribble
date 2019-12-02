@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
-import EosStuff from "../components/EosStuff";
+import { fetchInfo } from "../actions";
+import Header from "../features/header/Header";
+import BlockList from "../features/blockList/BlockList";
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchInfo());
+  }, [dispatch]);
+
   return (
     <div>
-      <EosStuff />
+      <Header />
+      <BlockList />
     </div>
   );
-}
+};
 
 export default App;

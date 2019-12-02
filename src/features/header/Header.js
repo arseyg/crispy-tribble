@@ -1,7 +1,7 @@
 import React from "react";
-import RefreshIcon from "./RefreshIcon";
+import RefreshIcon from "../../components/RefreshIcon";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchInfo } from "../actions";
+import { fetchInfo } from "../../actions";
 
 const Header = () => {
   const isInfoLoading = useSelector(state => state.eos.isInfoLoading);

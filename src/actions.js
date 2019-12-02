@@ -29,7 +29,7 @@ export const fetchBlock = blockNum => async dispatch => {
     dispatch(getBlockSuccess(blockInfo));
   } catch (err) {
     console.log("failed ", err);
-    dispatch(getBlockFailed());
+    dispatch(getBlockFailed(blockNum));
   }
 };
 
