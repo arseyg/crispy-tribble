@@ -15,7 +15,11 @@ const ActionCount = ({ transactions }) => {
   const actionCountValue = useMemo(() => countActions(transactions), [
     transactions
   ]);
-  return <div className="text-lg italic px-2">{actionCountValue} actions</div>;
+  return (
+    <div data-testid="actioncount" className="text-lg italic px-2">
+      {actionCountValue} actions
+    </div>
+  );
 };
 
 const Block = ({ blockId }) => {
@@ -42,8 +46,12 @@ const Block = ({ blockId }) => {
             }}
             className="cursor-pointer"
           >
-            <div className="text-sm">{blockInfo.timestamp}</div>
-            <div className="text-lg p-2 break-all">{blockInfo.id}</div>
+            <div data-testid="timestamp" className="text-sm">
+              {blockInfo.timestamp}
+            </div>
+            <div data-testid="blockhash" className="text-lg p-2 break-all">
+              {blockInfo.id}
+            </div>
             <ActionCount transactions={blockInfo.transactions} />
           </div>
           {isOpen && (
