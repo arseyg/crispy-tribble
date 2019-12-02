@@ -1,8 +1,6 @@
 import { createAction } from "@reduxjs/toolkit";
 import { getEosInfo, getBlock, getAbi } from "./api";
 
-export const anAction = createAction("an_action");
-
 export const getEosInfoStarted = createAction("eos/getinfostarted");
 export const getEosInfoSuccess = createAction("eos/getinfosuccess");
 export const getEosInfoFailed = createAction("eos/getinfofailed");
@@ -12,9 +10,6 @@ export const fetchInfo = () => async dispatch => {
     dispatch(getEosInfoStarted());
     const eosInfo = await getEosInfo();
     dispatch(getEosInfoSuccess(eosInfo));
-    //console.log(eosInfo.head_block_num);
-    //dispatch(fetchBlock(eosInfo.head_block_num));
-    //dispatch(fetchAbi("eosio.token"));
   } catch (err) {
     dispatch(getEosInfoFailed(err));
   }

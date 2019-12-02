@@ -8,7 +8,7 @@ import {
   getBlockFailed
 } from "../actions";
 
-const initialState = {
+export const initialState = {
   headBlockNum: null,
   blocks: {},
   activeBlocks: [],
